@@ -1,6 +1,7 @@
 package MAD.assignment1.model
 
-class Instructor(
+
+class Student(
     var name: String,
     var email: String,
     var username: String,
