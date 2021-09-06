@@ -1,4 +1,4 @@
-package MAD.assignment1
+package MAD.assignment1.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
