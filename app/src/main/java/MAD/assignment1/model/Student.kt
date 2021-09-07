@@ -6,7 +6,8 @@ class Student(
     var email: String,
     var username: String,
     var pin: Int,
-    var country: String
+    var country: String,
+    var instructorUsername: String
 ) : User {
 
     override fun getFunctionality(): ArrayList<Functionality> {
