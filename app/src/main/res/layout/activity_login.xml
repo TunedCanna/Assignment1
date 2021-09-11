@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="view.LoginActivity">
+    tools:context="MAD.assignment1.view.LoginActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PRACMARKER9000"
@@ -19,7 +20,7 @@
         app:layout_constraintVertical_bias="0.120000005" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/usernameInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -31,54 +32,91 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/titleText"
         app:layout_constraintVertical_bias="0.04000002"
         app:layout_constraintWidth_max="500dp" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword2"
+        android:id="@+id/pinInput0"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:gravity="center_horizontal"
+        android:imeOptions="actionNext"
         android:inputType="numberPassword"
+        android:maxLength="1"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumberPassword6"
+        app:layout_constraintEnd_toStartOf="@+id/pinInput1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameInput"
+        app:layout_constraintVertical_bias="0.06999999" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword6"
+        android:id="@+id/pinInput1"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:gravity="center_horizontal"
+        android:imeOptions="actionNext"
         android:inputType="numberPassword"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumberPassword7"
+        android:maxLength="1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/pinInput2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumberPassword2"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumberPassword2" />
+        app:layout_constraintStart_toEndOf="@+id/pinInput0"
+        app:layout_constraintTop_toTopOf="@+id/pinInput0" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword7"
+        android:id="@+id/pinInput2"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:gravity="center_horizontal"
+        android:imeOptions="actionNext"
         android:inputType="numberPassword"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumberPassword8"
+        android:maxLength="1"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/pinInput3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumberPassword6"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumberPassword2" />
+        app:layout_constraintStart_toEndOf="@+id/pinInput1"
+        app:layout_constraintTop_toTopOf="@+id/pinInput0" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword8"
+        android:id="@+id/pinInput3"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:gravity="center_horizontal"
+        android:imeOptions="actionNext"
         android:inputType="numberPassword"
+        android:maxLength="1"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumberPassword7"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumberPassword2" />
+        app:layout_constraintStart_toEndOf="@+id/pinInput2"
+        app:layout_constraintTop_toTopOf="@+id/pinInput0" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinInput1"
+        app:layout_constraintVertical_bias="0.06999999" />
+
+    <Button
+        android:id="@+id/gotoListSearchActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

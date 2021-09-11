@@ -1,6 +1,7 @@
 package MAD.assignment1.model
 
-interface User {
-
-    fun getFunctionality(): ArrayList<Functionality>
+abstract class User(
+    var username: String,
+    var pin: Int
+) {
 }

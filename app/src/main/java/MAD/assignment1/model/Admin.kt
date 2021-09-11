@@ -3,13 +3,4 @@ package MAD.assignment1.model
 class Admin(
     var username: String,
     var pin: Int
-) : User {
-
-    override fun getFunctionality(): ArrayList<Functionality> {
-        return arrayListOf<Functionality>().apply {
-//                add()
-//                add()
-//                add()
-        }
-    }
-}
+)

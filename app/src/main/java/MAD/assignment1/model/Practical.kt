@@ -3,7 +3,8 @@ package MAD.assignment1.model
 class Practical(
     var title: String,
     var description: String,
-    var availableMarks: Double
+    var availableMarks: Double,
+    var instructorUsername: String
 ) {
 
     var finalMarks = -1.0
