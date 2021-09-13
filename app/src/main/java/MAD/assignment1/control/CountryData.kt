@@ -7,7 +7,6 @@ class CountryData {
     companion object {
 
         private val countryList = mapOf(
-            "Unknown" to R.drawable.flag__unknown,
             "Andorra" to R.drawable.flag_ad,
             "United Arab Emirates" to R.drawable.flag_ae,
             "Afghanistan" to R.drawable.flag_af,

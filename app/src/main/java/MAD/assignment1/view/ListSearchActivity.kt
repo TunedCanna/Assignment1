@@ -1,28 +1,64 @@
 package MAD.assignment1.view
 
+import android.graphics.Color
+import android.graphics.ColorFilter
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Spinner
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import uni.worksheet3.R
 
 class ListSearchActivity : AppCompatActivity() {
 
-    val spinner: Spinner = findViewById(R.id.selectionSpinner)
-    val queryEditText: EditText = findViewById(R.id.queryEditText)
-    val searchButton: ImageButton = findViewById(R.id.searchButton)
+    lateinit var spinner: Spinner
+    lateinit var queryEditText: EditText
+    lateinit var searchButton: ImageButton
+    lateinit var addButton: Button
+
+    private val adminList = arrayListOf("Instructors", "Practicals", "Students")
+    private val instructorList = arrayListOf("Practicals", "Students")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_search)
 
-        var studentRecyclerFragment = supportFragmentManager.findFragmentById(R.id.listResults) as StudentRecyclerFragment?
+        //Find view items
+        spinner = findViewById(R.id.selectionSpinner)
+        queryEditText = findViewById(R.id.queryEditText)
+        searchButton = findViewById(R.id.searchButton)
+        addButton = findViewById(R.id.addButton)
+
+        var studentRecyclerFragment =
+            supportFragmentManager.findFragmentById(R.id.listResults) as StudentRecyclerFragment?
         if (studentRecyclerFragment == null) {
             studentRecyclerFragment = StudentRecyclerFragment()
-            supportFragmentManager.beginTransaction().add(R.id.listResults, studentRecyclerFragment).commit()
+            supportFragmentManager.beginTransaction().add(R.id.listResults, studentRecyclerFragment)
+                .commit()
         }
 
-        spinner
+        searchButton.drawable.setTint(Color.parseColor("#FF6200EE"))
+
+        //TODO: This needs to be selected by the logged in user
+        val spinnerAdapter: ArrayAdapter<String> =
+            ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, adminList)
+        spinner.adapter = spinnerAdapter
+
+        //Spinner on select listener
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                updateText()
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
+
+
+
+    }
+
+    private fun updateText() {
+        queryEditText.hint = "Search ${spinner.selectedItem}"
+        addButton.text = "Add ${spinner.selectedItem.toString().dropLast(1)}"
     }
 }

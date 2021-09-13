@@ -1,6 +1,7 @@
 package MAD.assignment1.control
 
 import MAD.assignment1.model.Student
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
