@@ -14,35 +14,41 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/queryEditText"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="Enter query"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/spinner"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="Search"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/searchButton"
+            app:layout_constraintStart_toEndOf="@+id/selectionSpinner"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
 
         <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="80dp"
+            android:id="@+id/selectionSpinner"
+            android:layout_width="100dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName" />
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/queryEditText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/queryEditText" />
+
+        <ImageButton
+            android:id="@+id/searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/queryEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/queryEditText"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout

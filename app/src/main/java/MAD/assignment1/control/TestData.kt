@@ -35,8 +35,7 @@ class TestData {
                 Student("Julia Smythe", "julias@school.com", "JuliaS", 1234, countries.random(), instructors.random().username),
                 Student("Peter Big", "peterb@school.com", "PeterB", 1234, countries.random(), instructors.random().username),
                 Student("Debbie June", "debbiej@school.com", "DebbieJ", 1234, countries.random(), instructors.random().username),
-                Student("Lewis Potts", "lewisp@school.com", "LewisP", 1234, countries.random(), instructors.random().username),
-                Student("Ben Smart", "ben@school.com", "BenS", 1234, countries.random(), instructors.random().username)
+                Student("Lewis Potts", "lewisp@school.com", "LewisP", 1234, countries.random(), instructors.random().username)
             )
         }
     }
