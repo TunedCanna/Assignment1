@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import uni.worksheet3.R
 
 class ListSearchActivity : AppCompatActivity() {
@@ -14,7 +15,7 @@ class ListSearchActivity : AppCompatActivity() {
     lateinit var searchButton: ImageButton
     lateinit var addButton: Button
 
-    lateinit var studentRecyclerFragment: StudentRecyclerFragment
+    lateinit var currentList: Fragment
 
     private val adminList = arrayListOf("Instructors", "Practicals", "Students")
     private val instructorList = arrayListOf("Practicals", "Students")
@@ -30,12 +31,6 @@ class ListSearchActivity : AppCompatActivity() {
         searchButton = findViewById(R.id.searchButton)
         addButton = findViewById(R.id.addButton)
 
-        studentRecyclerFragment = supportFragmentManager.findFragmentById(R.id.listResults) as StudentRecyclerFragment?
-        if (studentRecyclerFragment == null) {
-            studentRecyclerFragment = StudentRecyclerFragment()
-            supportFragmentManager.beginTransaction().add(R.id.listResults, studentRecyclerFragment)
-                .commit()
-        }
 
         //Make search button purple
         searchButton.drawable.setTint(Color.parseColor("#FF6200EE"))
@@ -65,7 +60,19 @@ class ListSearchActivity : AppCompatActivity() {
 
         when (spinner.selectedItem.toString()) {
             "Students" -> {
-
+                currentList = StudentRecyclerFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList)
+                    .commit()
+            }
+            "Instructors" -> {
+                currentList = InstructorRecyclerFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList)
+                    .commit()
+            }
+            "Practicals" -> {
+                currentList = PracticalRecyclerFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList)
+                    .commit()
             }
         }
     }

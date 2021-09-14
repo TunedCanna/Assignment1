@@ -30,6 +30,7 @@ class InstructorAdapter(
 
     override fun onBindViewHolder(holder: InstructorViewHolder, position: Int) {
         val instructor = instructorList[position]
+
         holder.countryImageView.setImageResource(CountryData.getFlag(instructor.country)!!)
         holder.nameTextView.text = instructor.name
         holder.marksTextView.visibility = View.GONE
