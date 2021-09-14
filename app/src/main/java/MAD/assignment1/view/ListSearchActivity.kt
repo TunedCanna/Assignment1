@@ -1,7 +1,6 @@
 package MAD.assignment1.view
 
 import android.graphics.Color
-import android.graphics.ColorFilter
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -15,8 +14,11 @@ class ListSearchActivity : AppCompatActivity() {
     lateinit var searchButton: ImageButton
     lateinit var addButton: Button
 
+    lateinit var studentRecyclerFragment: StudentRecyclerFragment
+
     private val adminList = arrayListOf("Instructors", "Practicals", "Students")
     private val instructorList = arrayListOf("Practicals", "Students")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +30,14 @@ class ListSearchActivity : AppCompatActivity() {
         searchButton = findViewById(R.id.searchButton)
         addButton = findViewById(R.id.addButton)
 
-        var studentRecyclerFragment =
-            supportFragmentManager.findFragmentById(R.id.listResults) as StudentRecyclerFragment?
+        studentRecyclerFragment = supportFragmentManager.findFragmentById(R.id.listResults) as StudentRecyclerFragment?
         if (studentRecyclerFragment == null) {
             studentRecyclerFragment = StudentRecyclerFragment()
             supportFragmentManager.beginTransaction().add(R.id.listResults, studentRecyclerFragment)
                 .commit()
         }
 
+        //Make search button purple
         searchButton.drawable.setTint(Color.parseColor("#FF6200EE"))
 
         //TODO: This needs to be selected by the logged in user
@@ -46,7 +48,7 @@ class ListSearchActivity : AppCompatActivity() {
         //Spinner on select listener
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                updateText()
+                spinnerUpdate()
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
@@ -57,8 +59,14 @@ class ListSearchActivity : AppCompatActivity() {
 
     }
 
-    private fun updateText() {
+    private fun spinnerUpdate() {
         queryEditText.hint = "Search ${spinner.selectedItem}"
         addButton.text = "Add ${spinner.selectedItem.toString().dropLast(1)}"
+
+        when (spinner.selectedItem.toString()) {
+            "Students" -> {
+
+            }
+        }
     }
 }

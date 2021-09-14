@@ -4,10 +4,11 @@ class Practical(
     var title: String,
     var description: String,
     var availableMarks: Double,
+    var finalMarks: Double = -1.0,
+    var studentUsername: String,
     var instructorUsername: String
 ) {
 
-    var finalMarks = -1.0
 
     fun isMarked(): Boolean = finalMarks >= 0
 

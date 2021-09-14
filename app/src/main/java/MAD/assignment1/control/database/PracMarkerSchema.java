@@ -1,15 +1,15 @@
 package MAD.assignment1.control.database;
 
-public class Schema {
+public class PracMarkerSchema {
 
     public static class StudentTable {
 
         public static final String NAME = "student";
         public static class Cols {
 
-            public static final String USERNAME = "username";
             public static final String NAME = "name";
             public static final String EMAIL = "email";
+            public static final String USERNAME = "username";
             public static final String PIN = "pin";
             public static final String COUNTRY = "country";
             public static final String INSTRUCTORUSERNAME = "instructorUsername";
@@ -21,9 +21,9 @@ public class Schema {
         public static final String NAME = "instructor";
         public static class Cols {
 
-            public static final String USERNAME = "username";
             public static final String NAME = "name";
-            public static final String EMAIl = "email";
+            public static final String EMAIL = "email";
+            public static final String USERNAME = "username";
             public static final String PIN = "pin";
             public static final String COUNTRY = "country";
         }
@@ -48,7 +48,18 @@ public class Schema {
             public static final String DESCRIPTION = "description";
             public static final String AVAILABLEMARKS = "availableMarks";
             public static final String FINALMARKS = "finalMarks";
+            public static final String STUDENTUSERNAME = "studentUsername";
             public static final String INSTRUCTORUSERNAME = "instructorUsername";
+        }
+    }
+
+    public static class LoggedInTable {
+
+        public static final String NAME = "loggedin";
+        public static class Cols {
+
+            public static final String TYPE = "type";
+            public static final String USERNAME = "username";
         }
     }
 }
