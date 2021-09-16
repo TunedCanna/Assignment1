@@ -26,17 +26,17 @@ class TestData {
             val countries = CountryData.getCountrySet()
 
             return arrayListOf(
-                Student("Ben Smart", "bens@school.com", "BenS", 1234, countries.random(), instructors.random().username),
-                Student("Susan Boyle", "susanb@school.com", "SusanB", 1234, countries.random(), instructors.random().username),
-                Student("Joe Boy", "joeb@school.com", "JoeB", 1234, countries.random(), instructors.random().username),
-                Student("Katie White", "katiew@school.com", "KatieW", 1234, countries.random(), instructors.random().username),
-                Student("George Brown", "georgeb@school.com", "GeorgeB", 1234, countries.random(), instructors.random().username),
-                Student("Amelia Smith", "amelias@school.com", "AmeliaS", 1234, countries.random(), instructors.random().username),
-                Student("David Christ", "davidc@school.com", "DavidC", 1234, countries.random(), instructors.random().username),
-                Student("Julia Smythe", "julias@school.com", "JuliaS", 1234, countries.random(), instructors.random().username),
-                Student("Peter Big", "peterb@school.com", "PeterB", 1234, countries.random(), instructors.random().username),
-                Student("Debbie June", "debbiej@school.com", "DebbieJ", 1234, countries.random(), instructors.random().username),
-                Student("Lewis Potts", "lewisp@school.com", "LewisP", 1234, countries.random(), instructors.random().username)
+                Student("Ben Smart", "bens@school.com", "BenS", 1234, countries.random(), "AnthonyG"),
+                Student("Susan Boyle", "susanb@school.com", "SusanB", 1234, countries.random(), "AnthonyG"),
+                Student("Joe Boy", "joeb@school.com", "JoeB", 1234, countries.random(), "AnthonyG"),
+                Student("Katie White", "katiew@school.com", "KatieW", 1234, countries.random(), "DorothyD"),
+                Student("George Brown", "georgeb@school.com", "GeorgeB", 1234, countries.random(), "DorothyD"),
+                Student("Amelia Smith", "amelias@school.com", "AmeliaS", 1234, countries.random(), "DorothyD"),
+                Student("David Christ", "davidc@school.com", "DavidC", 1234, countries.random(), "BorrisS"),
+                Student("Julia Smythe", "julias@school.com", "JuliaS", 1234, countries.random(), "BorrisS"),
+                Student("Peter Big", "peterb@school.com", "PeterB", 1234, countries.random(), "BorrisS"),
+                Student("Debbie June", "debbiej@school.com", "DebbieJ", 1234, countries.random(), "JoyceA"),
+                Student("Lewis Potts", "lewisp@school.com", "LewisP", 1234, countries.random(), "JoyceA")
             )
         }
 

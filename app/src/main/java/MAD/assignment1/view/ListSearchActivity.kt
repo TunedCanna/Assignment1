@@ -1,5 +1,9 @@
 package MAD.assignment1.view
 
+import MAD.assignment1.control.AuthData
+import MAD.assignment1.model.Admin
+import MAD.assignment1.model.Instructor
+import MAD.assignment1.model.User
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -10,12 +14,16 @@ import uni.worksheet3.R
 
 class ListSearchActivity : AppCompatActivity() {
 
+    //private var loggedInUser: User = Instructor("Anthony Gregleson", "anthonyg@school.com", "AnthonyG", 1234, "Australia")
+    private var loggedInUser: User = Admin()
+
     lateinit var spinner: Spinner
     lateinit var queryEditText: EditText
     lateinit var searchButton: ImageButton
     lateinit var addButton: Button
 
-    lateinit var currentList: Fragment
+    //This is the fragment that contains the listed results
+    lateinit var currentList: SearchableFragment
 
     private val adminList = arrayListOf("Instructors", "Practicals", "Students")
     private val instructorList = arrayListOf("Practicals", "Students")
@@ -31,13 +39,15 @@ class ListSearchActivity : AppCompatActivity() {
         searchButton = findViewById(R.id.searchButton)
         addButton = findViewById(R.id.addButton)
 
-
         //Make search button purple
         searchButton.drawable.setTint(Color.parseColor("#FF6200EE"))
 
-        //TODO: This needs to be selected by the logged in user
-        val spinnerAdapter: ArrayAdapter<String> =
+        //Set spinner list based on logged in user
+        val spinnerAdapter: ArrayAdapter<String> = if(getLoggedInUser().getAuthLevel() == AuthData.ADMIN) {
             ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, adminList)
+        } else {
+            ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, instructorList)
+        }
         spinner.adapter = spinnerAdapter
 
         //Spinner on select listener
@@ -50,28 +60,37 @@ class ListSearchActivity : AppCompatActivity() {
             }
         }
 
+        //Search on click listener
+        searchButton.setOnClickListener {
+            currentList.queryDatabase(queryEditText.text.toString())
+            currentList.updateListView(0, 10)
+        }
 
 
     }
 
-    private fun spinnerUpdate() {
+    fun getLoggedInUser(): User {
+        return loggedInUser
+    }
+
+    fun spinnerUpdate() {
         queryEditText.hint = "Search ${spinner.selectedItem}"
         addButton.text = "Add ${spinner.selectedItem.toString().dropLast(1)}"
 
         when (spinner.selectedItem.toString()) {
             "Students" -> {
-                currentList = StudentRecyclerFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList)
+                currentList = StudentRecyclerFragment(this)
+                supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList as Fragment)
                     .commit()
             }
             "Instructors" -> {
                 currentList = InstructorRecyclerFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList)
+                supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList as Fragment)
                     .commit()
             }
             "Practicals" -> {
                 currentList = PracticalRecyclerFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList)
+                supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList as Fragment)
                     .commit()
             }
         }

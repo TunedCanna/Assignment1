@@ -1,5 +1,8 @@
 package MAD.assignment1.view
 
+import MAD.assignment1.control.TestData
+import MAD.assignment1.model.Admin
+import MAD.assignment1.model.StudentList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -64,5 +67,19 @@ class LoginActivity : AppCompatActivity() {
     fun showSnackbar() {
         snackBar = Snackbar.make(constraintLayout, "NO ADMIN ACCOUNT CREATED\nPlease register above", Snackbar.LENGTH_INDEFINITE)
         snackBar.show()
+    }
+
+    fun attemptLogin(username: String, pin: Int) {
+
+    }
+
+    fun insertTestData() {
+        val cleanList = StudentList()
+        cleanList.load(applicationContext, null)
+        val testList = TestData.getTestStudents()
+
+        for (student in testList) {
+            cleanList.add(student)
+        }
     }
 }

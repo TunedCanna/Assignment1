@@ -14,4 +14,8 @@ class Student(
         return AuthData.STUDENT
     }
 
+    override fun getStudentListUsername(): String {
+        return instructorUsername
+    }
+
 }

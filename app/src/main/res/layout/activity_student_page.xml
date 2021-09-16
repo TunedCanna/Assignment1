@@ -9,18 +9,19 @@
         android:id="@+id/contentsConstraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@id/practicalResults"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="0.15">
+        app:layout_constraintVertical_weight="0.14">
 
         <ImageView
             android:id="@+id/countryImageView1"
             android:layout_width="98dp"
             android:layout_height="66dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
             android:background="@drawable/flag_border"
             android:padding="1dp"
@@ -37,8 +38,9 @@
             android:text="Name:"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/emailTextView1"
             app:layout_constraintStart_toEndOf="@+id/countryImageView1"
-            app:layout_constraintTop_toTopOf="@+id/countryImageView1"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Name:" />
 
         <TextView
@@ -46,12 +48,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
-            android:layout_marginTop="24dp"
             android:text="Email:"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/countryImageView1"
-            app:layout_constraintTop_toBottomOf="@+id/nameTextView1"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Email:" />
 
         <TextView
@@ -59,60 +61,77 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
-            android:layout_marginTop="24dp"
             android:text="Username:"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/countryImageView1"
             app:layout_constraintTop_toBottomOf="@+id/emailTextView1"
             tools:text="Username:" />
 
         <TextView
             android:id="@+id/marksTextView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="80%"
             android:textColor="@android:color/holo_green_light"
-            android:textSize="34sp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/countryImageView1"
             app:layout_constraintStart_toStartOf="@+id/countryImageView1"
             app:layout_constraintTop_toBottomOf="@+id/countryImageView1"
             tools:text="80%" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
+        <TextView
+            android:id="@+id/actualNameTextView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:ems="10"
             android:gravity="right"
-            android:inputType="textPersonName"
-            android:text="Name"
+            android:text="Matthew Wallace"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/nameTextView1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/nameTextView1"
-            app:layout_constraintTop_toTopOf="@+id/nameTextView1"
-            tools:text="Benjamin Boyle" />
+            app:layout_constraintTop_toTopOf="@+id/nameTextView1" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
+        <TextView
+            android:id="@+id/actualEmailTextView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:ems="10"
             android:gravity="right"
-            android:inputType="textPersonName"
-            android:text="Name"
+            android:text="mwal@student.com"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/emailTextView1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/emailTextView1"
             app:layout_constraintTop_toTopOf="@+id/emailTextView1"
-            tools:text="BenB@student.com" />
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/actualUsernameTextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="right"
+            android:text="mwal96"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/usernameTextView1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/usernameTextView1"
+            app:layout_constraintTop_toTopOf="@+id/usernameTextView1"
+            app:layout_constraintVertical_bias="0.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout

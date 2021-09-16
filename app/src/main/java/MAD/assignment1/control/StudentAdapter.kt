@@ -1,6 +1,7 @@
 package MAD.assignment1.control
 
 import MAD.assignment1.model.Student
+import MAD.assignment1.model.StudentList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import uni.worksheet3.R
 
 class StudentAdapter(
-    var studentList: ArrayList<Student>
+    var studentList: StudentList
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
     inner class StudentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,6 +38,7 @@ class StudentAdapter(
     }
 
     override fun getItemCount(): Int {
-        return studentList.size
+        return studentList.size()
     }
+
 }

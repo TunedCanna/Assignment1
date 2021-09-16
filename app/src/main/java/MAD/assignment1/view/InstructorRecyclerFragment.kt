@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uni.worksheet3.R
 
-class InstructorRecyclerFragment(): Fragment() {
+class InstructorRecyclerFragment(): Fragment(), SearchableFragment {
 
     //Todo
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,5 +33,13 @@ class InstructorRecyclerFragment(): Fragment() {
         recyclerView.adapter = instructorAdapter
 
         return fragmentSelectorView
+    }
+
+    override fun queryDatabase(queryText: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateListView(positionStart: Int, itemCount: Int) {
+        TODO("Not yet implemented")
     }
 }

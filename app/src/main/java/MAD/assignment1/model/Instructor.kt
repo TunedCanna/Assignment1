@@ -12,4 +12,8 @@ class Instructor(
     override fun getAuthLevel(): Int {
         return AuthData.INSTRUCTOR
     }
+
+    override fun getStudentListUsername(): String {
+        return username
+    }
 }
