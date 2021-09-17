@@ -2,10 +2,14 @@ package MAD.assignment1.view
 
 import MAD.assignment1.control.AuthData
 import MAD.assignment1.control.TestData
+import MAD.assignment1.control.database.PracMarkerCursor
+import MAD.assignment1.control.database.PracMarkerDbHelper
+import MAD.assignment1.control.database.PracMarkerSchema
 import MAD.assignment1.model.Admin
 import MAD.assignment1.model.Instructor
 import MAD.assignment1.model.InstructorList
 import MAD.assignment1.model.User
+import android.database.CursorIndexOutOfBoundsException
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -16,8 +20,8 @@ import uni.worksheet3.R
 
 class ListSearchActivity : AppCompatActivity() {
 
-    //private var loggedInUser: User = Instructor("Anthony Gregleson", "anthonyg@school.com", "AnthonyG", 1234, "Australia")
-    private var loggedInUser: User = Admin()
+    private var loggedInUser: User = Instructor("Anthony Gregleson", "anthonyg@school.com", "AnthonyG", 1234, "Australia")
+    //private var loggedInUser: User = Admin
 
     lateinit var spinner: Spinner
     lateinit var queryEditText: EditText
@@ -45,6 +49,8 @@ class ListSearchActivity : AppCompatActivity() {
 
         //Make search button purple
         searchButton.drawable.setTint(Color.parseColor("#FF6200EE"))
+
+        getLoggedInUser()
 
         //Set spinner list based on logged in user
         val spinnerAdapter: ArrayAdapter<String> = if(getLoggedInUser().getAuthLevel() == AuthData.ADMIN) {
@@ -74,6 +80,31 @@ class ListSearchActivity : AppCompatActivity() {
     }
 
     fun getLoggedInUser(): User {
+
+        val db = PracMarkerDbHelper(this).readableDatabase
+
+        val cursor = PracMarkerCursor(
+            db.query(
+                PracMarkerSchema.InstructorTable.NAME,
+                null, // SELECT all columns
+                null, // WHERE clause (null = all rows)
+                null, // WHERE arguments
+                null, // GROUP BY clause
+                null, // HAVING clause
+                null) // ORDER BY clause
+        )
+        try {
+            cursor.moveToFirst()
+            while (!cursor.isAfterLast) {
+                instructors.add(cursor.instructor)
+                cursor.moveToNext()
+            }
+        } catch (e: CursorIndexOutOfBoundsException) {
+            //No action needed
+        } finally {
+            cursor.close()
+        }
+
         return loggedInUser
     }
 

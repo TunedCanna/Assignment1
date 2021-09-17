@@ -89,4 +89,5 @@ class InstructorList() {
             InstructorTable.NAME,
             InstructorTable.Cols.USERNAME + " = ?", whereValue)
     }
+
 }

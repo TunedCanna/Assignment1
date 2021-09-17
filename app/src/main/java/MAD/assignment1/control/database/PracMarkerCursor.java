@@ -2,6 +2,7 @@ package MAD.assignment1.control.database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
+import android.database.sqlite.SQLiteDatabase;
 
 import MAD.assignment1.model.*;
 import MAD.assignment1.control.database.PracMarkerSchema.*;
@@ -54,5 +55,10 @@ public class PracMarkerCursor extends CursorWrapper {
 
         return new Practical(title, description, availableMarks, finalMarks,
                 studentUsername, instructorUsername);
+    }
+
+    public User getLoggedInUser() {
+        String title = getString(getColumnIndex(LoggedInTable.Cols.TYPE));
+        String description = getString(getColumnIndex(LoggedInTable.Cols.USERNAME));
     }
 }
