@@ -1,8 +1,10 @@
 package MAD.assignment1.view
 
 import MAD.assignment1.control.AuthData
+import MAD.assignment1.control.TestData
 import MAD.assignment1.model.Admin
 import MAD.assignment1.model.Instructor
+import MAD.assignment1.model.InstructorList
 import MAD.assignment1.model.User
 import android.graphics.Color
 import android.os.Bundle
@@ -32,6 +34,8 @@ class ListSearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_search)
+
+
 
         //Find view items
         spinner = findViewById(R.id.selectionSpinner)
@@ -84,7 +88,7 @@ class ListSearchActivity : AppCompatActivity() {
                     .commit()
             }
             "Instructors" -> {
-                currentList = InstructorRecyclerFragment()
+                currentList = InstructorRecyclerFragment(this)
                 supportFragmentManager.beginTransaction().replace(R.id.listResults, currentList as Fragment)
                     .commit()
             }

@@ -1,6 +1,7 @@
 package MAD.assignment1.control
 
 import MAD.assignment1.model.Instructor
+import MAD.assignment1.model.InstructorList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import uni.worksheet3.R
 
 class InstructorAdapter(
-    var instructorList: ArrayList<Instructor>
+    var instructorList: InstructorList
 ) : RecyclerView.Adapter<InstructorAdapter.InstructorViewHolder>() {
 
     inner class InstructorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,13 +31,12 @@ class InstructorAdapter(
 
     override fun onBindViewHolder(holder: InstructorViewHolder, position: Int) {
         val instructor = instructorList[position]
-
         holder.countryImageView.setImageResource(CountryData.getFlag(instructor.country)!!)
         holder.nameTextView.text = instructor.name
         holder.marksTextView.visibility = View.GONE
     }
 
     override fun getItemCount(): Int {
-        return instructorList.size
+        return instructorList.size()
     }
 }

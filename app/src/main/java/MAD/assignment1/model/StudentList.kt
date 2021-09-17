@@ -25,10 +25,8 @@ class StudentList() {
     fun size(): Int = students.size
 
     //Takes an inInstructorUsername string to get only a list of those instructor's students
-    //If inInstructorUsername == null, where == null too. This is to get admin results
     fun load(context: Context, where: String?) {
         db = PracMarkerDbHelper(context.applicationContext).writableDatabase
-
 
         val cursor = PracMarkerCursor(
             db.query(

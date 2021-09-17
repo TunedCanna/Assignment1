@@ -12,6 +12,10 @@ class Admin(
     var pin: Int = -1
 ) : User {
 
+    companion object {
+
+    }
+
     lateinit var db: SQLiteDatabase
 
     override fun getAuthLevel(): Int {

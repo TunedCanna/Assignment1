@@ -40,5 +40,4 @@ class StudentAdapter(
     override fun getItemCount(): Int {
         return studentList.size()
     }
-
 }

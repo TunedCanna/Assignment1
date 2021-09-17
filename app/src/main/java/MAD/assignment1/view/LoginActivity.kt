@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.snackbar.Snackbar
@@ -39,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
         pin3 = findViewById(R.id.pinInput3)
         loginButton = findViewById(R.id.loginButton)
 
-        showSnackbar()
+        showToast()
 
         pin0.addTextChangedListener {
             if (it!!.length == 1) {
@@ -69,17 +70,16 @@ class LoginActivity : AppCompatActivity() {
         snackBar.show()
     }
 
+    fun showToast() {
+        Toast.makeText(this, "This is a test toast", Toast.LENGTH_LONG).show()
+    }
+
     fun attemptLogin(username: String, pin: Int) {
 
     }
 
-    fun insertTestData() {
-        val cleanList = StudentList()
-        cleanList.load(applicationContext, null)
-        val testList = TestData.getTestStudents()
+    fun checkAdminExists() {
 
-        for (student in testList) {
-            cleanList.add(student)
-        }
     }
+
 }
