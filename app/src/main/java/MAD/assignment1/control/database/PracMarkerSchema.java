@@ -59,6 +59,7 @@ public class PracMarkerSchema {
         public static class Cols {
 
             public static final String TYPE = "type";
+            public static final String STUDENTLISTUSERNAME = "studentListUsername";
             public static final String USERNAME = "username";
         }
     }

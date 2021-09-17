@@ -5,15 +5,7 @@ import MAD.assignment1.control.AuthData
 class Instructor(
     var name: String,
     var email: String,
-    var username: String,
-    var pin: Int,
+    username: String,
+    var pin: String,
     var country: String
-) : User {
-    override fun getAuthLevel(): Int {
-        return AuthData.INSTRUCTOR
-    }
-
-    override fun getStudentListUsername(): String {
-        return username
-    }
-}
+) : User(AuthData.INSTRUCTOR, username, username)

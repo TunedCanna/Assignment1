@@ -18,7 +18,7 @@ public class PracMarkerCursor extends CursorWrapper {
         String name = getString(getColumnIndex(StudentTable.Cols.NAME));
         String email = getString(getColumnIndex(StudentTable.Cols.EMAIL));
         String username = getString(getColumnIndex(StudentTable.Cols.USERNAME));
-        int pin = getInt(getColumnIndex(StudentTable.Cols.PIN));
+        String pin = getString(getColumnIndex(StudentTable.Cols.PIN));
         String country = getString(getColumnIndex(StudentTable.Cols.COUNTRY));
         String instructorUsername = getString(getColumnIndex(StudentTable.Cols.INSTRUCTORUSERNAME));
 
@@ -30,7 +30,7 @@ public class PracMarkerCursor extends CursorWrapper {
         String name = getString(getColumnIndex(InstructorTable.Cols.NAME));
         String email = getString(getColumnIndex(InstructorTable.Cols.EMAIL));
         String username = getString(getColumnIndex(InstructorTable.Cols.USERNAME));
-        int pin = getInt(getColumnIndex(InstructorTable.Cols.PIN));
+        String pin = getString(getColumnIndex(InstructorTable.Cols.PIN));
         String country = getString(getColumnIndex(InstructorTable.Cols.COUNTRY));
 
         return new Instructor(name, email, username, pin, country);
@@ -39,7 +39,7 @@ public class PracMarkerCursor extends CursorWrapper {
     public Admin getAdmin() {
 
         String username = getString(getColumnIndex(AdminTable.Cols.USERNAME));
-        int pin = getInt(getColumnIndex(AdminTable.Cols.PIN));
+        String pin = getString(getColumnIndex(AdminTable.Cols.PIN));
 
         return new Admin(username, pin);
     }
@@ -58,7 +58,11 @@ public class PracMarkerCursor extends CursorWrapper {
     }
 
     public User getLoggedInUser() {
-        String title = getString(getColumnIndex(LoggedInTable.Cols.TYPE));
-        String description = getString(getColumnIndex(LoggedInTable.Cols.USERNAME));
+        int type = getInt(getColumnIndex(LoggedInTable.Cols.TYPE));
+        String studentListUsername = getString(getColumnIndex(LoggedInTable.Cols.STUDENTLISTUSERNAME));
+        String username = getString(getColumnIndex(LoggedInTable.Cols.USERNAME));
+
+
+        return new User(type, studentListUsername, username);
     }
 }

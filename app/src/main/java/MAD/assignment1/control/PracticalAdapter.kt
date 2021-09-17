@@ -18,7 +18,6 @@ class PracticalAdapter(
         var titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         var descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
         var marksTextView2: TextView = itemView.findViewById(R.id.marksTextView2)
-        var imageButton: ImageButton = itemView.findViewById(R.id.imageButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PracticalViewHolder {
@@ -36,7 +35,6 @@ class PracticalAdapter(
         holder.marksTextView2.text = if (practical.finalMarks == -1.0) {
             "NYM"
         } else {
-            holder.imageButton.visibility = View.GONE
             "${practical.finalMarks}/${practical.availableMarks}"
         }
     }

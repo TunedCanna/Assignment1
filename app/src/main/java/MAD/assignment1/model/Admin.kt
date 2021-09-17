@@ -10,25 +10,18 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 
 class Admin(
-    var username: String = "",
-    var pin: Int = -1
-) : User {
+    username: String = "",
+    var pin: String = "0000"
+) : User(AuthData.ADMIN, "", username) {
 
 
     lateinit var db: SQLiteDatabase
 
-    override fun getAuthLevel(): Int {
-        return AuthData.ADMIN
-    }
-
-    override fun getStudentListUsername(): String {
-        return ""
-    }
 
     fun load(context: Context) {
         db = PracMarkerDbHelper(context.applicationContext).writableDatabase
         val cursor = PracMarkerCursor(
-            db.query(PracMarkerSchema.AdminTable.NAME,
+            db.query(AdminTable.NAME,
                 null, // SELECT all columns
                 null, // WHERE clause (null = all rows)
                 null, // WHERE arguments
@@ -37,18 +30,22 @@ class Admin(
                 null) // ORDER BY clause
         )
 
-        if (cursor.count > 0) {
-            try {
-                cursor.moveToFirst()
+
+        try {
+            if (cursor.moveToFirst()) {
                 username = cursor.admin.username
                 pin = cursor.admin.pin
-            } finally {
-                cursor.close()
+            } else {
+                username = "NONE CREATED"
+                pin = "1111"
             }
+        } finally {
+            cursor.close()
         }
+
     }
 
-    fun addAdmin(username: String, pin: Int) {
+    fun addAdmin(username: String, pin: String) {
         val cv = ContentValues()
         cv.put(AdminTable.Cols.USERNAME, username)
         cv.put(AdminTable.Cols.PIN, pin)
@@ -61,5 +58,5 @@ class Admin(
             AdminTable.Cols.USERNAME + " = ?", arrayOf(username))
     }
 
-    fun isCreated() = pin != -1
+    fun isCreated() = username != "NONE CREATED"
 }

@@ -1,17 +1,12 @@
 package MAD.assignment1.view
 
 import MAD.assignment1.control.AuthData
-import MAD.assignment1.control.TestData
-import MAD.assignment1.control.database.PracMarkerCursor
-import MAD.assignment1.control.database.PracMarkerDbHelper
-import MAD.assignment1.control.database.PracMarkerSchema
-import MAD.assignment1.model.Admin
-import MAD.assignment1.model.Instructor
-import MAD.assignment1.model.InstructorList
+
 import MAD.assignment1.model.User
-import android.database.CursorIndexOutOfBoundsException
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -20,19 +15,20 @@ import uni.worksheet3.R
 
 class ListSearchActivity : AppCompatActivity() {
 
-    private var loggedInUser: User = Instructor("Anthony Gregleson", "anthonyg@school.com", "AnthonyG", 1234, "Australia")
+    var loggedInUser = User(-1, "", "")
     //private var loggedInUser: User = Admin
 
     lateinit var spinner: Spinner
     lateinit var queryEditText: EditText
     lateinit var searchButton: ImageButton
     lateinit var addButton: Button
+    lateinit var logoutButton: ImageButton
 
     //This is the fragment that contains the listed results
     lateinit var currentList: SearchableFragment
 
     private val adminList = arrayListOf("Instructors", "Practicals", "Students")
-    private val instructorList = arrayListOf("Practicals", "Students")
+    private val instructorList = arrayListOf("Students")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,20 +36,20 @@ class ListSearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list_search)
 
 
+        loggedInUser = User.getLoggedInUser(this)
 
         //Find view items
         spinner = findViewById(R.id.selectionSpinner)
         queryEditText = findViewById(R.id.queryEditText)
         searchButton = findViewById(R.id.searchButton)
         addButton = findViewById(R.id.addButton)
+        logoutButton = findViewById(R.id.logoutButton)
 
         //Make search button purple
         searchButton.drawable.setTint(Color.parseColor("#FF6200EE"))
 
-        getLoggedInUser()
-
         //Set spinner list based on logged in user
-        val spinnerAdapter: ArrayAdapter<String> = if(getLoggedInUser().getAuthLevel() == AuthData.ADMIN) {
+        val spinnerAdapter: ArrayAdapter<String> = if(loggedInUser.authLevel == AuthData.ADMIN) {
             ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, adminList)
         } else {
             ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, instructorList)
@@ -73,40 +69,27 @@ class ListSearchActivity : AppCompatActivity() {
         //Search on click listener
         searchButton.setOnClickListener {
             currentList.queryDatabase(queryEditText.text.toString())
-            currentList.updateListView(0, 10)
+            currentList.updateListView(0, 100)
         }
 
-
-    }
-
-    fun getLoggedInUser(): User {
-
-        val db = PracMarkerDbHelper(this).readableDatabase
-
-        val cursor = PracMarkerCursor(
-            db.query(
-                PracMarkerSchema.InstructorTable.NAME,
-                null, // SELECT all columns
-                null, // WHERE clause (null = all rows)
-                null, // WHERE arguments
-                null, // GROUP BY clause
-                null, // HAVING clause
-                null) // ORDER BY clause
-        )
-        try {
-            cursor.moveToFirst()
-            while (!cursor.isAfterLast) {
-                instructors.add(cursor.instructor)
-                cursor.moveToNext()
+        queryEditText.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                currentList.queryDatabase(queryEditText.text.toString())
+                currentList.updateListView(0, 100)
+                return@OnKeyListener true
             }
-        } catch (e: CursorIndexOutOfBoundsException) {
-            //No action needed
-        } finally {
-            cursor.close()
+            false
+        })
+
+        logoutButton.setOnClickListener {
+            User.logoutUser(this)
+            intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
-        return loggedInUser
     }
+
 
     fun spinnerUpdate() {
         queryEditText.hint = "Search ${spinner.selectedItem}"

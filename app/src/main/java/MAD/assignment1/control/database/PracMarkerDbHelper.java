@@ -27,7 +27,7 @@ public class PracMarkerDbHelper extends SQLiteOpenHelper {
                 StudentTable.Cols.NAME + " TEXT, " +
                 StudentTable.Cols.EMAIL + " TEXT, " +
                 StudentTable.Cols.USERNAME + " TEXT, " +
-                StudentTable.Cols.PIN + " INTEGER, " +
+                StudentTable.Cols.PIN + " TEXT, " +
                 StudentTable.Cols.COUNTRY + " TEXT, " +
                 StudentTable.Cols.INSTRUCTORUSERNAME + " TEXT)");
 
@@ -36,13 +36,13 @@ public class PracMarkerDbHelper extends SQLiteOpenHelper {
                 InstructorTable.Cols.NAME + " TEXT, " +
                 InstructorTable.Cols.EMAIL + " TEXT, " +
                 InstructorTable.Cols.USERNAME + " TEXT, " +
-                InstructorTable.Cols.PIN + " INTEGER, " +
+                InstructorTable.Cols.PIN + " TEXT, " +
                 InstructorTable.Cols.COUNTRY + " TEXT)");
 
         //Create Admin table
         db.execSQL("CREATE TABLE " + AdminTable.NAME + "(" +
                 AdminTable.Cols.USERNAME + " TEXT, " +
-                AdminTable.Cols.PIN + " INTEGER)");
+                AdminTable.Cols.PIN + " TEXT)");
 
         //Create Practical table
         db.execSQL("CREATE TABLE " + PracticalTable.NAME + "(" +
@@ -56,7 +56,8 @@ public class PracMarkerDbHelper extends SQLiteOpenHelper {
         //Create LoggedIn table
         db.execSQL("CREATE TABLE " + LoggedInTable.NAME + "(" +
                 LoggedInTable.Cols.TYPE + " INTEGER, " +
-                LoggedInTable.Cols.USERNAME + " TEXT)");
+                LoggedInTable.Cols.STUDENTLISTUSERNAME + " TEXT, " +
+                LoggedInTable.Cols.USERNAME+ " TEXT)");
     }
 
     @Override

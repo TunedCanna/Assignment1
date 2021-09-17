@@ -4,22 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:minHeight="70dp"
     android:background="@drawable/list_item_border">
 
-    <TextView
+    <EditText
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        android:text="TextView"
-        android:textColor="@color/black"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:maxWidth="100dp"
+        android:maxLines="10"
+        android:scrollHorizontally="false"
+        android:text="Practical 1"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Practical 1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/descriptionTextView"
@@ -50,11 +52,4 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="16/20" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="24dp"
-        android:layout_height="19dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 </androidx.constraintlayout.widget.ConstraintLayout>

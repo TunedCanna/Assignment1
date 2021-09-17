@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment1">
         <activity
+            android:name="MAD.assignment1.view.ListSearchActivity"
+            android:exported="true" />
+        <activity
+            android:name="MAD.assignment1.view.StudentPageActivity"
+            android:exported="true" />
+        <activity
             android:name="MAD.assignment1.view.LoginActivity"
             android:exported="true">
             <intent-filter>

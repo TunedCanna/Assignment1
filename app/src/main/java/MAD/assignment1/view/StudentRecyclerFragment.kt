@@ -45,11 +45,11 @@ class StudentRecyclerFragment(
     //If admin is logged in return "1=1"
     //Else, return "instructorUsername = '<loggedInInstructorUsername>'
     //This is so that the admin will return all students regardless of username
-    private fun getUsernameWhere(): String? {
-        return if (parentActivity.getLoggedInUser().getStudentListUsername() == "") {
+    private fun getUsernameWhere(): String {
+        return if (parentActivity.loggedInUser.studentListUsername == "") {
             "1=1"
         } else {
-            "${StudentTable.Cols.INSTRUCTORUSERNAME} = '${parentActivity.getLoggedInUser().getStudentListUsername()}'"
+            "${StudentTable.Cols.INSTRUCTORUSERNAME} = '${parentActivity.loggedInUser.studentListUsername}'"
         }
     }
 
