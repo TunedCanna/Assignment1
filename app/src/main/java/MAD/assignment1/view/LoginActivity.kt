@@ -84,10 +84,14 @@ class LoginActivity : AppCompatActivity() {
             admin.clearAdminDB()
             TestData.wipeInstructorTable(this)
             TestData.wipeStudentTable(this)
+            TestData.wipePracticalTable(this)
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
         testDataButton.setOnClickListener {
             TestData.writeTestInstructors(this)
             TestData.writeTestStudents(this)
+            TestData.writeTestPracticals(this)
         }
 
 
@@ -141,8 +145,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun openStudentPageActivity() {
-        intent = Intent(this, StudentPageActivity::class.java)
-        startActivity(intent)
+        startActivity(StudentPageActivity.getIntent(this, loggedInUser.username))
         finish()
     }
 
@@ -175,10 +178,12 @@ class LoginActivity : AppCompatActivity() {
 
             if (usernameString == admin.username && pinString == admin.pin) { //Check if admin is logging in
                 User.writeLoggedInUser(this, AuthData.ADMIN, "", usernameString)
+                loggedInUser = User(AuthData.ADMIN, "", usernameString)
                 openListSearchActivity()
             } else if (studentList.size() > 0) {
                 if (pinString == studentList[0].pin) {
                     User.writeLoggedInUser(this, AuthData.STUDENT, "", usernameString)
+                    loggedInUser = User(AuthData.STUDENT, "", usernameString)
                     openStudentPageActivity()
                 } else {
                     incorrect()
@@ -186,6 +191,7 @@ class LoginActivity : AppCompatActivity() {
             } else if (instructorList.size() > 0) {
                 if (pinString == instructorList[0].pin) {
                     User.writeLoggedInUser(this, AuthData.INSTRUCTOR, usernameString, usernameString)
+                    loggedInUser = User(AuthData.INSTRUCTOR, usernameString, usernameString)
                     openListSearchActivity()
                 } else {
                     incorrect()
@@ -197,6 +203,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
     }
+
 
     fun verifyNewDetails() {
         if ((usernameInput.text.toString() != "") && //If all fields are inputted
@@ -252,9 +259,4 @@ class LoginActivity : AppCompatActivity() {
             showSnackbar("Please enter login details")
         }
     }
-
-
-
-
-
 }

@@ -50,8 +50,7 @@ public class PracMarkerDbHelper extends SQLiteOpenHelper {
                 PracticalTable.Cols.DESCRIPTION + " TEXT, " +
                 PracticalTable.Cols.AVAILABLEMARKS + " REAL, " +
                 PracticalTable.Cols.FINALMARKS + " REAL, " +
-                PracticalTable.Cols.STUDENTUSERNAME + " TEXT, " +
-                PracticalTable.Cols.INSTRUCTORUSERNAME + " TEXT)");
+                PracticalTable.Cols.STUDENTUSERNAME + " TEXT)");
 
         //Create LoggedIn table
         db.execSQL("CREATE TABLE " + LoggedInTable.NAME + "(" +

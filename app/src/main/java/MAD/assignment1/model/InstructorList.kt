@@ -30,7 +30,7 @@ class InstructorList() {
 
         val cursor = PracMarkerCursor(
             db.query(
-                PracMarkerSchema.InstructorTable.NAME,
+                InstructorTable.NAME,
                 null, // SELECT all columns
                 where, // WHERE clause (null = all rows)
                 null, // WHERE arguments

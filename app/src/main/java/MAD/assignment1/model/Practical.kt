@@ -5,8 +5,7 @@ class Practical(
     var description: String,
     var availableMarks: Double,
     var finalMarks: Double = -1.0,
-    var studentUsername: String,
-    var instructorUsername: String
+    var studentUsername: String = ""
 ) {
 
 

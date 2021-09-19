@@ -49,7 +49,6 @@ public class PracMarkerSchema {
             public static final String AVAILABLEMARKS = "availableMarks";
             public static final String FINALMARKS = "finalMarks";
             public static final String STUDENTUSERNAME = "studentUsername";
-            public static final String INSTRUCTORUSERNAME = "instructorUsername";
         }
     }
 

@@ -1,28 +1,29 @@
 package MAD.assignment1.view
 
 import MAD.assignment1.control.StudentAdapter
+import MAD.assignment1.control.database.PracMarkerDbHelper
 import MAD.assignment1.model.StudentList
 import MAD.assignment1.control.database.PracMarkerSchema.StudentTable
+import MAD.assignment1.model.User
+import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uni.worksheet3.R
 
-//TODO: Fix crash on rotate, needs an empty constructor or sumthin
-class StudentRecyclerFragment(
-    val parentActivity: ListSearchActivity
-): Fragment(), SearchableFragment {
+class StudentRecyclerFragment: Fragment(), SearchableFragment {
 
     lateinit var studentList: StudentList
     lateinit var studentAdapter: StudentAdapter
+    lateinit var loggedInUser: User
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loggedInUser = User.getLoggedInUser(requireContext())
         queryDatabase("")
     }
 
@@ -46,10 +47,10 @@ class StudentRecyclerFragment(
     //Else, return "instructorUsername = '<loggedInInstructorUsername>'
     //This is so that the admin will return all students regardless of username
     private fun getUsernameWhere(): String {
-        return if (parentActivity.loggedInUser.studentListUsername == "") {
+        return if (loggedInUser.studentListUsername == "") {
             "1=1"
         } else {
-            "${StudentTable.Cols.INSTRUCTORUSERNAME} = '${parentActivity.loggedInUser.studentListUsername}'"
+            "${StudentTable.Cols.INSTRUCTORUSERNAME} = '${loggedInUser.studentListUsername}'"
         }
     }
 
@@ -70,4 +71,5 @@ class StudentRecyclerFragment(
         studentAdapter.studentList = studentList
         studentAdapter.notifyDataSetChanged()
     }
+
 }

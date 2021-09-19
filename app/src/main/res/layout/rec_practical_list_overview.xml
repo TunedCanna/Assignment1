@@ -4,10 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="70dp"
-    android:background="@drawable/list_item_border">
+    android:background="@drawable/list_item_border"
+    android:minHeight="70dp">
 
     <EditText
+        android:id="@+id/finalMarkEditText"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:background="@android:color/transparent"
+        android:gravity="right"
+        android:hint="NYM"
+        android:inputType="textNoSuggestions|number"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/marksTextView2"
+        app:layout_constraintEnd_toStartOf="@+id/marksTextView2"
+        app:layout_constraintTop_toTopOf="@+id/marksTextView2" />
+
+    <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,38 +33,51 @@
         android:maxLines="10"
         android:scrollHorizontally="false"
         android:text="Practical 1"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/descriptionTextView"
+    <EditText
+        android:id="@+id/descriptionEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
-        android:text="TextView"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/marksTextView2"
+        app:layout_constraintEnd_toStartOf="@+id/finalMarkEditText"
         app:layout_constraintStart_toEndOf="@+id/titleTextView"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="This is the first practical. It will be covering the basic principles of mobile development. This includes concepts such as Activities, Layouts, Views and more." />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/marksTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:textColor="@color/black"
+        android:background="@android:color/transparent"
+        android:gravity="right"
+        android:inputType="textNoSuggestions|number"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deleteButton2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="/20" />
+
+    <ImageButton
+        android:id="@+id/deleteButton2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="16/20" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

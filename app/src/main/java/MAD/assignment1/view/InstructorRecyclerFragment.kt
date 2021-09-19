@@ -8,6 +8,7 @@ import MAD.assignment1.control.database.PracMarkerSchema.InstructorTable
 import MAD.assignment1.model.InstructorList
 import MAD.assignment1.model.PracticalList
 import MAD.assignment1.model.StudentList
+import MAD.assignment1.model.User
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,13 +18,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uni.worksheet3.R
 
-//TODO: Fix crash on rotate, needs an empty constructor or sumthin
-class InstructorRecyclerFragment(
-    val parentActivity: ListSearchActivity
-): Fragment(), SearchableFragment {
+class InstructorRecyclerFragment: Fragment(), SearchableFragment {
 
     lateinit var instructorList: InstructorList
     lateinit var instructorAdapter: InstructorAdapter
+    lateinit var container1: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +35,11 @@ class InstructorRecyclerFragment(
         savedInstanceState: Bundle?
     ): View? {
 
+        container1 = container!!
         val fragmentSelectorView: View = inflater.inflate(R.layout.fragment_recycler_list, container, false)
         val recyclerView: RecyclerView = fragmentSelectorView.findViewById(R.id.itemRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        instructorAdapter = InstructorAdapter(instructorList) //TODO make dynamic import
+        instructorAdapter = InstructorAdapter(instructorList)
         recyclerView.adapter = instructorAdapter
 
         return fragmentSelectorView

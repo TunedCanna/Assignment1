@@ -48,37 +48,38 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contentsConstraintLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/page_header_border"
-        app:layout_constraintBottom_toTopOf="@id/practicalResults"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="0dp"
+        android:background="@drawable/page_header_border_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/practicalResults"
+        app:layout_constraintHorizontal_weight="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout2">
 
         <ImageView
             android:id="@+id/countryImageView1"
             android:layout_width="98dp"
             android:layout_height="66dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:adjustViewBounds="true"
             android:background="@drawable/flag_border"
             android:padding="1dp"
             android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instructorTextView1"
             app:srcCompat="@drawable/flag_au" />
 
         <TextView
             android:id="@+id/nameTextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
             android:layout_marginTop="10dp"
             android:text="Name:"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/countryImageView1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Name:" />
 
@@ -105,12 +106,11 @@
             android:id="@+id/emailTextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
             android:layout_marginTop="10dp"
             android:text="Email:"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/countryImageView1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameTextView1"
             tools:text="Email:" />
 
@@ -137,12 +137,11 @@
             android:id="@+id/usernameTextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
             android:layout_marginTop="10dp"
             android:text="Username:"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/countryImageView1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailTextView1"
             tools:text="Username:" />
 
@@ -166,12 +165,11 @@
             android:id="@+id/pinTextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
             android:layout_marginTop="10dp"
             android:text="Pin:"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/countryImageView1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usernameTextView1"
             tools:text="Pin:" />
 
@@ -198,16 +196,12 @@
             android:id="@+id/instructorTextView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:text="Instructor: "
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/countryImageView1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pinTextView1"
-            app:layout_constraintVertical_bias="1.0"
             tools:text="Instructor: " />
 
         <EditText
@@ -232,13 +226,14 @@
             android:id="@+id/marksTextView1"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginStart="16dp"
             android:gravity="center"
             android:textColor="@android:color/holo_green_light"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/countryImageView1"
-            app:layout_constraintStart_toStartOf="@+id/countryImageView1"
-            app:layout_constraintTop_toBottomOf="@+id/countryImageView1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/countryImageView1"
+            app:layout_constraintTop_toBottomOf="@+id/instructorEditText"
             tools:text="80%" />
 
 
@@ -250,8 +245,9 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contentsConstraintLayout">
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/contentsConstraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

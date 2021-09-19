@@ -46,18 +46,18 @@
             android:id="@+id/pinInput0"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:gravity="center_horizontal"
             android:imeOptions="actionNext"
             android:inputType="numberPassword"
             android:maxLength="1"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/pinInput1"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usernameInput"
-            app:layout_constraintVertical_bias="0.06999999" />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <EditText
             android:id="@+id/pinInput1"
@@ -69,10 +69,13 @@
             android:inputType="numberPassword"
             android:maxLength="1"
             android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pinInput0"
             app:layout_constraintEnd_toStartOf="@+id/pinInput2"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/pinInput0"
-            app:layout_constraintTop_toTopOf="@+id/pinInput0" />
+            app:layout_constraintTop_toTopOf="@+id/pinInput0"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/pinInput2"
@@ -84,10 +87,13 @@
             android:inputType="numberPassword"
             android:maxLength="1"
             android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pinInput0"
             app:layout_constraintEnd_toStartOf="@+id/pinInput3"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/pinInput1"
-            app:layout_constraintTop_toTopOf="@+id/pinInput0" />
+            app:layout_constraintTop_toTopOf="@+id/pinInput0"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
             android:id="@+id/pinInput3"
@@ -99,30 +105,32 @@
             android:inputType="numberPassword"
             android:maxLength="1"
             android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pinInput0"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/pinInput2"
             app:layout_constraintTop_toTopOf="@+id/pinInput0" />
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="500dip"
+            android:layout_height="200dip"
             android:text="Login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pinInput1"
-            app:layout_constraintVertical_bias="0.06999999" />
+            app:layout_constraintVertical_bias="0.16000003" />
 
         <Button
             android:id="@+id/clearButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="Clear Database"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/testDataButton"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
@@ -133,9 +141,10 @@
             android:text="write test data"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/clearButton"
-            app:layout_constraintVertical_bias="0.110000014" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/clearButton"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton"
+            app:layout_constraintVertical_bias="0.501" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -51,10 +51,9 @@ public class PracMarkerCursor extends CursorWrapper {
         double availableMarks = getDouble(getColumnIndex(PracticalTable.Cols.AVAILABLEMARKS));
         double finalMarks = getDouble(getColumnIndex(PracticalTable.Cols.FINALMARKS));
         String studentUsername = getString(getColumnIndex(PracticalTable.Cols.STUDENTUSERNAME));
-        String instructorUsername = getString(getColumnIndex(PracticalTable.Cols.INSTRUCTORUSERNAME));
 
         return new Practical(title, description, availableMarks, finalMarks,
-                studentUsername, instructorUsername);
+                studentUsername);
     }
 
     public User getLoggedInUser() {

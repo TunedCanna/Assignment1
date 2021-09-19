@@ -43,32 +43,30 @@ class TestData {
 
         fun getTestPracticals(): ArrayList<Practical> {
 
-            val instructorUsernames = getTestInstructors().map { it.username }
             val studentUsernames = getTestStudents().map { it.username }
 
             return arrayListOf(
                 Practical("Practical 01",
                 "This is the first practical, we discuss all kinds of stuff that you may find interesting",
-                        10.0,-1.0, studentUsernames[0], instructorUsernames[0]),
+                        10.0),
                 Practical("Practical 02",
                     "This is the second practical, the novelty is still here so no doubt you'll still be engaged!",
-                    15.0,-1.0, studentUsernames[0], instructorUsernames[0]),
+                    15.0),
                 Practical("Practical 03",
                     "This is the third practical, definitely still interesting right!? Oh how the young fire rages",
-                    10.0,-1.0, studentUsernames[0], instructorUsernames[0]),
+                    10.0),
                 Practical("Practical 04",
                     "This is the fourth practical, you might not finish this practical early this time, don't worry, it was just a busy week",
-                    20.0,-1.0, studentUsernames[0], instructorUsernames[0]),
+                    20.0),
                 Practical("Practical 05",
                     "This is the fifth practical, oh, I think you're at the stage where you're loosing interest a bit, probably not though!!!!?!",
-                    10.0,-1.0, studentUsernames[0], instructorUsernames[0]),
+                    10.0),
                 Practical("Practical 06",
                     "This is the sixth practical, yep, this is painful, still fun but painful",
-                    10.0,-1.0, studentUsernames[0], instructorUsernames[0]),
+                    10.0),
                 Practical("Practical 07",
                     "This is the seventh practical, pain",
-                    10.0,-1.0, studentUsernames[0], instructorUsernames[0]),
-            )
+                    10.0))
         }
 
         fun writeTestStudents(context: Context) {
@@ -84,6 +82,18 @@ class TestData {
             instructorList.load(context, null)
             for (instructor in getTestInstructors()) {
                 instructorList.add(instructor)
+            }
+        }
+
+        fun writeTestPracticals(context: Context) {
+            val practicalList = PracticalList()
+            practicalList.load(context)
+
+            val usernameList = getTestStudents().map { it.username }
+            val testPracticalList = getTestPracticals()
+
+            for (practical in testPracticalList) {
+                practicalList.add(practical)
             }
         }
 
