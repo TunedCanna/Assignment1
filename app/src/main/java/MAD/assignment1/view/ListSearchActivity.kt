@@ -2,7 +2,6 @@ package MAD.assignment1.view
 
 import MAD.assignment1.control.AuthData
 import MAD.assignment1.control.CountryData
-import MAD.assignment1.control.database.PracMarkerSchema
 import MAD.assignment1.control.database.PracMarkerSchema.*
 import MAD.assignment1.model.*
 
@@ -105,7 +104,7 @@ class ListSearchActivity : AppCompatActivity() {
         }
 
         addButton.setOnClickListener {
-            createNewContactDialog()
+            createNewDialog()
         }
 
     }
@@ -136,7 +135,7 @@ class ListSearchActivity : AppCompatActivity() {
         }
     }
 
-    fun createNewContactDialog() {
+    fun createNewDialog() {
         dialogBuilder = AlertDialog.Builder(this)
         val contactPopupView = layoutInflater.inflate(R.layout.add_user_popup, null)
         nameEditText3 = contactPopupView.findViewById(R.id.nameEditText3)
